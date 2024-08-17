@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:5174/'],
+  origin: ['http://localhost:5174/','https://mfs-server-pink.vercel.app/'],
   Credential: true,
   optionSuccessStatus: 200,
 }
@@ -65,4 +65,3 @@ app.listen(port, () =>{
     console.log(`mfs is running on port ${port}`);
 })
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, enim incidunt? Quasi dicta eligendi numquam facere possimus, fuga accusantium temporibuseee.</p>
