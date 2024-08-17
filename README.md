@@ -29,3 +29,6 @@ This is the backend for the MERN stack project. It handles API requests, data ma
    ```bash
    MONGO_URI=your_mongodb_connection_string
    PORT=5000
+
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, enim incidunt? Quasi dicta eligendi numquam facere possimus, fuga accusantium temporibuseee.</p>
+
