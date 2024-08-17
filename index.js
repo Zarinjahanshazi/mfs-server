@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const port = process.env.PORT || 5000;
 
 
@@ -9,8 +10,19 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+const corsOptions = {
+  origin: ['http://localhost:5174/'],
+  Credential: true,
+  optionSuccessStatus: 200,
+}
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+app.use(cors(corsOptions))
+app.use(express.json())
+
+app.get('/',(req,res)=>{
+  res.send('Hello from Bangladesh.....')
+})
+
 const uri = "mongodb+srv://mfsUser:3mpQsRG0wzxuu6HV@cluster0.s8jaol5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -28,6 +40,14 @@ async function run() {
     // await client.connect();
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
+    const dataCollection = client.db('mfsDb').collection('mfs')
+    
+
+    app.get('/products', async (req,res)=>{
+      const result = await dataCollection.find().toArray()
+      res.send(result)
+    })
+
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
